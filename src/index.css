@@ -17,6 +17,14 @@ code {
   border: none;
   width: 100%;
   cursor: pointer;
+  border-radius: 8px;  
+}
+
+.favButton:hover{
+  background-color: rgba(43, 43, 43, 0.233);
+}
+.favButton:active{
+  background-color: rgba(0, 0, 0, 0.452);
 }
 
 h1{
