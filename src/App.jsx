@@ -1,14 +1,14 @@
-
-import Footer from "./Components/Footer";
-import Navbar from "./Components/Navbar";
-
+import React from 'react'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import FooterNav from '../src/Components/FooterNav'
 
 function App() {
   return (
-      <div className="App">
-          <Navbar/>
-          <Footer/>
-      </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<FooterNav/>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
