@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react'
+import React, {useEffect}  from 'react'
 import { useContext } from 'react'
 import {ContextGlobal} from './utils/global.context'
 import {AppBar, Box, Toolbar, Typography, Button, IconButton} from '@mui/material';
@@ -10,7 +10,13 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
-  const {state, dispatch} = useContext(ContextGlobal);
+  const {state , dispatch} = useContext(ContextGlobal);
+
+  useEffect(() => {
+    console.log(state.data);
+  }, [state.data])
+  
+
 
   const navigate = useNavigate();
   return (
@@ -27,7 +33,7 @@ const Navbar = () => {
           <Button onClick={()=> navigate("/favs")} color="inherit">Favs</Button>
           
           <IconButton
-            onClick={()=> dispatch({type: state.prefersDark})}
+            onClick={()=> dispatch({type: "theme"})}
             size="large"
             edge="start"
             color="inherit"
