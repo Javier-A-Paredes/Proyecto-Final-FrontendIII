@@ -1,33 +1,81 @@
 import { Link } from 'react-router-dom';
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from 'react';
+import { Card, CardActions, CardContent, Button, Typography, CardMedia } from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
+const Cards = ({ name, username, id }) => {
+  const [ arrayFavs, setArrayFavs ] = useState(localStorage.getItem('favoritos') ? JSON.parse(localStorage.getItem('favoritos')) : [])
+    
+  useEffect(() => {      
+    const favs = localStorage.getItem('favoritos')    
+    if (favs !== null){      
+      setArrayFavs(arrayFavs => JSON.parse(favs))           
+    }
+  }, [])  
 
-const Card = ({ name, username, id }) => {
-
-  const addFav = ()=>{
-    // Aqui iria la logica para agregar la Card en el localStorage
+  const cargarIconoBoton = () =>{
+    const favs = localStorage.getItem('favoritos')
+    if (favs !== null){
+      return favs.includes(id) ? <StarIcon /> : <StarBorderIcon />
+    } else {
+      return <StarBorderIcon />
+    }    
   }
+
+  useEffect(() => {
+    cargarIconoBoton()    
+  }, [arrayFavs])
+
+  const addFav = () => {        
+    // Aqui iria la logica para agregar la Card en el localStorage
+    if(arrayFavs.includes(id)){      
+      setArrayFavs(arrayFavs => arrayFavs.filter(fav => fav !== id))      
+      console.log(arrayFavs)
+    } else if(!arrayFavs.includes(id)){      
+      setArrayFavs(arrayFavs => [...arrayFavs, id])      
+      console.log(arrayFavs)
+    }
+    localStorage.setItem('favoritos', JSON.stringify(arrayFavs))
+  }
+  
   name = "susan sarandon"
   username = "bret"
   id = 3
-  return (
-    <div className="card">
-        {/* En cada card deberan mostrar en name - username y el id */}
-        {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-        <Link to={`/details/${id}`}>
-          <img src="./images/doctor.jpg" alt="doctor" />
-          <h5>{name}</h5>
-          <p>{username}</p>
-          <p>{id}</p>
-        </Link>
 
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={addFav} className="favButton">Add fav</button>
-    </div>
+  return (
+    
+    /* En cada card deberan mostrar en name - username y el id */
+    /* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */
+    /* Ademas deberan integrar la logica para guardar cada Card en el localStorage */
+
+    <Card sx={{ maxWidth: 345 }} >
+      <CardMedia        
+        component="img"
+        height="240"
+        image="./images/doctor.jpg"
+        alt="doctor"
+      />
+      <CardContent >
+        <Link to={`/details/${id}`}>
+          <Typography gutterBottom variant="h5" component="div" textAlign={'center'}>
+            {name}
+          </Typography>
+        </Link>
+        <Typography variant="body2" color="text.secondary" textAlign={'center'}>
+          {username}            
+        </Typography>
+      </CardContent>
+      <CardActions style={{justifyContent: 'center'}} >
+        {/* {console.log(arrayFavs.includes(id))} */}
+        <Button onClick={ addFav } size="small"> { cargarIconoBoton() } </Button>          
+      </CardActions>
+    </Card>
   );
 };
 
-export default Card;
+export default Cards;
 
 // const data = [
 //   {
