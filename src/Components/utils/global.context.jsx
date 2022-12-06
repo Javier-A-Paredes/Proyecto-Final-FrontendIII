@@ -28,10 +28,12 @@ export const ContextProvider = ({ children }) => {
     palette:{
       mode: (state.prefersDark? 'dark':'light'), 
       primary:{
-        main: (state.prefersDark? grey[900]: blue[500])
+        main: (state.prefersDark? grey[900]: blue[500]), 
+        contrastText: (state.prefersDark? "#EEEEEE": "#000000")
       }, 
       secondary:{
-        main: (state.prefersDark? grey[900]:red[400] )
+        main: (state.prefersDark? grey[900]:red[400] ), 
+        contrastText: (state.prefersDark? "#EEEEEE": "#000000")
       }
     }
   });
