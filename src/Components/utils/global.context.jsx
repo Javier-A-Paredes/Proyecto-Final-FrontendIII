@@ -1,20 +1,21 @@
-import {useEffect ,useMemo,useReducer, useState } from "react";
+import {useMemo,useReducer } from "react";
 import { createContext} from "react";
 import axios from "axios";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { blue, grey, red } from "@mui/material/colors";
 
-export const ContextGlobal = createContext();
+export const ContextGlobal = createContext(undefined);
 
-const reducerFunction = (state, {type}) =>{
+// a ver si funca
 
-  switch (type) {
-    case false:
-      return {...state, prefersDark: true}
-    case true:
-      return {...state, prefersDark: false}
+const reducerFunction = (state, action) =>{
+  switch (action.type) {
+    case "theme":
+      return {...state, prefersDark: !state.prefersDark};
+    case "data":
+      return {...state, data: action.payload};
     default:
-      return {...state, prefersDark: false};
+      return state;
   }
 }
 
@@ -35,19 +36,16 @@ export const ContextProvider = ({ children }) => {
     }
   });
 
-  const [odontoData, setOdontoData] = useState([]);
-
   const getData = () =>{
     axios.get(`https://jsonplaceholder.typicode.com/users`).then(
       res=> {
-        setOdontoData(res.data);
+        dispatch({type: "data" , payload: res.data});
       }
     )
   }
   useMemo(() => getData(), [])
 
   const store = {
-    odontoData,
     state,
     dispatch
   };
