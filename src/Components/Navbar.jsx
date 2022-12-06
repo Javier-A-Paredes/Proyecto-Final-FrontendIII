@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import { useContext } from 'react'
 import {ContextGlobal} from './utils/global.context'
 import {AppBar, Box, Toolbar, Typography, Button, IconButton} from '@mui/material';
@@ -10,13 +10,12 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
-  const {state, dispatch} = useContext(ContextGlobal)
+  const {state, dispatch} = useContext(ContextGlobal);
 
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{padding: "10px 50px"}} >
         <Toolbar>
           <img src="./DH.ico" alt="DH icono" />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
