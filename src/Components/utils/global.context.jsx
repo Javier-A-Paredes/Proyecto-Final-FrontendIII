@@ -32,7 +32,7 @@ export const ContextProvider = ({ children }) => {
         contrastText: (state.prefersDark? "#EEEEEE": "#000000")
       }, 
       secondary:{
-        main: (state.prefersDark? grey[900]:red[400] ), 
+        main: (state.prefersDark? blue[50]:blue[500] ), 
         contrastText: (state.prefersDark? "#EEEEEE": "#000000")
       }
     }
