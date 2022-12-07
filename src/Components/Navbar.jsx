@@ -1,8 +1,9 @@
-import React, {useEffect}  from 'react'
+import React from 'react'
 import { useContext } from 'react'
 import {ContextGlobal} from './utils/global.context'
 import {AppBar, Box, Toolbar, Typography, Button, IconButton} from '@mui/material';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -10,13 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
-  const {state , dispatch} = useContext(ContextGlobal);
-
-  useEffect(() => {
-    console.log(state.data);
-  }, [state.data])
-  
-
+  const {state, dispatch} = useContext(ContextGlobal);
 
   const navigate = useNavigate();
   return (
@@ -41,7 +36,7 @@ const Navbar = () => {
             sx={{ mr: 2 }
           }
           >
-            <LightModeIcon/>
+            {state.prefersDark?<DarkModeIcon/>:<LightModeIcon/>}
           </IconButton>
           
         </Toolbar>
