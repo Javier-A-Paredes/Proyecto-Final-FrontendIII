@@ -23,6 +23,29 @@ code {
   border: none;
   width: 100%;
   cursor: pointer;
+  border-radius: 8px;  
+}
+
+.favButton:hover{
+  background-color: rgba(43, 43, 43, 0.233);
+}
+.favButton:active{
+  background-color: rgba(0, 0, 0, 0.452);
+}
+.formButton{
+  background-color: rgba(136, 136, 136, 0.116);
+  padding: 10px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 8px;  
+}
+
+.formButton:hover{
+  background-color: rgba(43, 43, 43, 0.233);
+}
+.formButton:active{
+  background-color: rgba(0, 0, 0, 0.452);
 }
 
 h1{
@@ -72,6 +95,22 @@ form{
   border: 0.5px solid rgb(136, 136, 136);
 }
 
+.card a{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  border: 0.5px solid rgb(136, 136, 136);
+  line-height: 0px;
+}
+.card img {
+  width: 200px;
+}
+.imagen-card:hover {
+  cursor: pointer;
+}
 .card:hover{
   border: 0.5px solid rgb(206, 217, 142);
 }
@@ -79,7 +118,7 @@ form{
 .card-grid{
   display: flex;
   justify-content: space-evenly;
-  gap: 1rem;
+  gap: 5rem;
   width: 90vw;
   height: auto;
   flex-wrap: wrap;

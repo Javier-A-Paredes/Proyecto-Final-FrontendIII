@@ -22,7 +22,7 @@ const reducerFunction = (state, action) =>{
 }
 
 export const ContextProvider = ({ children }) => {
-  const initialState = {prefersDark: false, data: [], favs: []}
+  const initialState = {prefersDark: false, data: [], favs: localStorage.getItem('favoritos') ? JSON.parse(localStorage.getItem('favoritos')) : []}
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
   const [state, dispatch] = useReducer(reducerFunction, initialState);
 
@@ -34,7 +34,7 @@ export const ContextProvider = ({ children }) => {
         contrastText: (state.prefersDark? "#EEEEEE": "#000000")
       }, 
       secondary:{
-        main: (state.prefersDark? grey[900]:red[400] ), 
+        main: (state.prefersDark? blue[50]:blue[500] ), 
         contrastText: (state.prefersDark? "#EEEEEE": "#000000")
       }
     }
