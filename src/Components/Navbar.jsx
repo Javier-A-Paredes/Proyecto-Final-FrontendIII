@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <header>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" sx={{padding: "10px 50px"}} >
+        <AppBar position="static" sx={{padding: "10px 50px"}} id={"Navbar"}>
           <Toolbar>
             <img src="./DH.ico" alt="DH icono" />
             
