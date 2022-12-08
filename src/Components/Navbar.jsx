@@ -15,37 +15,39 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{padding: "10px 50px"}} >
-        <Toolbar>
-          <img src="./DH.ico" alt="DH icono" />
-          
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              <Link to='/'>
-                Odonto
-              </Link>
-            </Typography>
-          
-          
-          <Button onClick={()=> navigate("/")} color="inherit">Home</Button>
-          <Button onClick={()=> navigate("/contact")} color="inherit">Contact</Button>
-          <Button onClick={()=> navigate("/favs")} color="inherit">Favs</Button>
-          
-          <IconButton
-            onClick={()=> dispatch({type: "theme"})}
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }
-          }
-          >
-            {state.prefersDark?<DarkModeIcon/>:<LightModeIcon/>}
-          </IconButton>
-          
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <header>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static" sx={{padding: "10px 50px"}} >
+          <Toolbar>
+            <img src="./DH.ico" alt="DH icono" />
+            
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Link to='/'>
+                  Odonto
+                </Link>
+              </Typography>
+            
+            
+            <Button onClick={()=> navigate("/")} color="inherit">Home</Button>
+            <Button onClick={()=> navigate("/contact")} color="inherit">Contact</Button>
+            <Button onClick={()=> navigate("/favs")} color="inherit">Favs</Button>
+            
+            <IconButton
+              onClick={()=> dispatch({type: "theme"})}
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }
+            }
+            >
+              {state.prefersDark?<DarkModeIcon/>:<LightModeIcon/>}
+            </IconButton>
+            
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </header>
   )
 }
 
