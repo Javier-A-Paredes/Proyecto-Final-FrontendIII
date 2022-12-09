@@ -1,3 +1,4 @@
+import { Box } from '@mui/material'
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
@@ -7,7 +8,9 @@ const FooterNav = () => {
   return (
     <div>
         <Navbar/>
-        <Outlet/>
+          <Box minHeight="100vh">
+            <Outlet/>
+          </Box>
         <Footer/>
     </div>
   )
