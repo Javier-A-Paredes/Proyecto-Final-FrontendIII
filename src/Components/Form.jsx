@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TextField, Button } from '@mui/material';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
-
+import swal from 'sweetalert2'
 const Formulario = () => {
   //Aqui deberan implementar el form completo con sus validaciones
   
@@ -20,7 +20,7 @@ const Formulario = () => {
     },
     validationSchema: schema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      swal.fire(`Gracias ${values.nombre}, te contactaremos en breve via email.`);
     },
   });
   
