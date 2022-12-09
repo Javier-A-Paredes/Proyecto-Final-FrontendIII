@@ -19,13 +19,15 @@ const Navbar = () => {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" sx={{padding: "10px 50px"}} >
           <Toolbar>
+          <Link to='/'>
             <img src="./DH.ico" alt="DH icono" />
-            
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <Link to='/'>
-                  Odonto
-                </Link>
-              </Typography>
+          </Link>
+
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <Link to='/'>
+                Odonto
+              </Link>
+            </Typography>
             
             
             <Button onClick={()=> navigate("/")} color="inherit">Home</Button>

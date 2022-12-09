@@ -81,8 +81,8 @@ form{
   flex-direction: column;
   justify-content: space-around;
   width: 300px;
-  height: 100px;
-  margin: 0 auto;
+  /* height: 100px; */
+  margin: 50px auto;
 }
 
 .card{

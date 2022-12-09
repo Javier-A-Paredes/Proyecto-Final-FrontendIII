@@ -4,6 +4,7 @@ import FooterNav from '../src/Components/FooterNav'
 import Home from './Routes/Home';
 import Favs from './Routes/Favs'
 import Detail from './Routes/Detail';
+import Form from './Components/Form'
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +13,7 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='/favs' element={<Favs />} />
           <Route path='/details/:id' element={<Detail />} />
+          <Route path='/contact' element={<Form />}/>
         </Route>
       </Routes>
     </BrowserRouter>
