@@ -8,9 +8,9 @@ const FooterNav = () => {
   return (
     <div>
         <Navbar/>
-          <Box minHeight="100vh">
-            <Outlet/>
-          </Box>
+            <main style={{minHeight: "100vh"}}>
+              <Outlet/>
+            </main>
         <Footer/>
     </div>
   )

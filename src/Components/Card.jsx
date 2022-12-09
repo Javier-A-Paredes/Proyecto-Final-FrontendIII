@@ -49,7 +49,7 @@ const Cards = ({ name, username, id }) => {
     /* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */
     /* Ademas deberan integrar la logica para guardar cada Card en el localStorage */
 
-    <Card sx={{ maxWidth: 240 }} >
+    <Card sx={{ maxWidth: 240 }} role={`odonto-card`}>
       <CardMedia    
         className='imagen-card'    
         component="img"
@@ -60,7 +60,7 @@ const Cards = ({ name, username, id }) => {
       />
       <CardContent >
         <Link to={`/details/${id}`}>
-          <Typography gutterBottom variant="h5" noWrap component="div" color="secondary.contrastText" textAlign={'center'}>
+          <Typography role="card-name" gutterBottom variant="h5" noWrap component="div" color="secondary.contrastText" textAlign={'center'}>
             {name}
           </Typography>
         </Link>
