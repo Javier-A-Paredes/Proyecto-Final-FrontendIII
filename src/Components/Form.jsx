@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { TextField, Button } from '@mui/material';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import swal from 'sweetalert2'
+
 const Formulario = () => {
   //Aqui deberan implementar el form completo con sus validaciones
   
@@ -26,12 +27,12 @@ const Formulario = () => {
   
   return (
     <div>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} className="formulario" data-testid="form">
         <TextField           
           sx={{margin:"5px"}}            
           id="outlined-required"
-          label="Full Name"
           name="nombre"
+          label="Full Name"          
           defaultValue= {formik.values.nombre}
           onChange={formik.handleChange}          
           error={formik.touched.nombre && Boolean(formik.errors.nombre)}
@@ -41,7 +42,7 @@ const Formulario = () => {
           sx={{margin:"5px"}}            
           id="outlined-required"
           name="email"
-          label="Email"
+          label="Email"          
           value={formik.values.email}
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}
