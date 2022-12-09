@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Card from '../Components/Card'
 import { useContext } from 'react'
 import { ContextGlobal } from '../Components/utils/global.context'

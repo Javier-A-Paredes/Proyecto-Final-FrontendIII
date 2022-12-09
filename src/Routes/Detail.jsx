@@ -21,8 +21,8 @@ const ExpandMore = styled((props) => {
 
 function Detail() {
   const [expanded, setExpanded] = useState(false);  
-  const {id} = useParams()
-  const [detalles, setDetalles] = useState({name:"", username:"", email:"", phone:"", website:"", companyName:"", companyCatchphrase:"", addressStreet:"", addressSuite: "", addressCity:"", addressZipcode:""})
+  const {id} = useParams();
+  const [detalles, setDetalles] = useState({name:"", username:"", email:"", phone:"", website:"", companyName:"", companyCatchphrase:"", addressStreet:"", addressSuite: "", addressCity:"", addressZipcode:""});
 
   useEffect(()=>{    
     axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
