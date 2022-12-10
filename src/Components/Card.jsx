@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useEffect } from 'react';
 import { Card, CardActions, CardContent, Button, Typography, CardMedia } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
@@ -7,7 +7,6 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { ContextGlobal } from './utils/global.context';
 
 const Cards = ({ name, username, id }) => {
-  const [favoriteados, setFavoriteados] = useState([])
   const navegar = useNavigate()
   const { state, dispatch } = useContext(ContextGlobal)
 
@@ -32,7 +31,7 @@ const Cards = ({ name, username, id }) => {
 
   useEffect(() => {
     cargarIconoBoton()    
-  }, [favoriteados])
+  }, [state.favs])
   
   const cargarIconoBoton = () =>{    
     const favs = JSON.parse(localStorage.getItem('favoritos'))    

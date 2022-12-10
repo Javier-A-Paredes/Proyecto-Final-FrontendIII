@@ -4,7 +4,9 @@ import { useParams } from 'react-router-dom'
 import { Card, CardHeader, Avatar, IconButton, CardMedia, CardContent, Typography, CardActions, styled, Collapse, Box } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { red } from '@mui/material/colors'
+import { grey, red, yellow } from '@mui/material/colors'
+import { useContext } from 'react'
+import { ContextGlobal } from '../Components/utils/global.context'
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
  
 
@@ -23,6 +25,16 @@ function Detail() {
   const [expanded, setExpanded] = useState(false);  
   const {id} = useParams();
   const [detalles, setDetalles] = useState({name:"", username:"", email:"", phone:"", website:"", companyName:"", companyCatchphrase:"", addressStreet:"", addressSuite: "", addressCity:"", addressZipcode:""});
+  const { state, dispatch } = useContext(ContextGlobal)
+
+  const cargarIconoBoton = () =>{    
+    const favs = JSON.parse(localStorage.getItem('favoritos'))    
+    if (favs !== null){
+      return <FavoriteIcon sx={{color: favs.includes( Number(id)) ? "red": "grey"}}/>
+    } else {
+      return <FavoriteIcon color="grey"/>
+    }    
+  }  
 
   useEffect(()=>{    
     axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
@@ -35,6 +47,25 @@ function Detail() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const addFav = (agregado) => {
+    const favoritos = localStorage.getItem('favoritos');  
+    if (favoritos){
+      let favoritosParse = JSON.parse(favoritos);
+      const dentistasFiltrados =  favoritosParse.filter(dentista => dentista !== agregado);
+      const existe = dentistasFiltrados.length !== favoritosParse.length;
+
+      existe ? favoritosParse = dentistasFiltrados : favoritosParse.push(agregado)
+      localStorage.setItem('favoritos', JSON.stringify(favoritosParse))      
+      
+      dispatch({type:"favs", payload:favoritosParse} )
+      // setFavoriteados(favoritosParse)
+    } else {
+      localStorage.setItem('favoritos', JSON.stringify([agregado]))
+      dispatch({type:"favs", payload:[ agregado ]} )
+      // setFavoriteados([agregado])
+    }
+  }
 
   return (
     <Box display={"flex"} flexDirection={"column"} justifyContent={"space-around"} alignItems={"center"}>
@@ -65,8 +96,9 @@ function Detail() {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
+          <IconButton aria-label="add to favorites" onClick={() => addFav(Number(id))}>
+            {console.log( detalles.id)}
+            { cargarIconoBoton() }
           </IconButton>
           
           <ExpandMore
